@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "scripts": {
+    "get": "node get.js",
+    "post": "node post.js"
+  },
+  "dependencies": {
+    "crypto-js": "4.1.1",
+    "dotenv": "16.4.5",
+    "node-fetch": "3.3.0"
+  },
+  "engines": {
+    "node": "20.17.0"
+  },
+  "license": "ISC"
+}

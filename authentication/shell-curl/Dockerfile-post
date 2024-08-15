@@ -1,0 +1,11 @@
+FROM ubuntu:20.04
+RUN apt-get update && \
+    apt-get install -y \
+    coreutils \
+    curl \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+COPY post.sh /usr/local/bin/post.sh
+COPY .env /usr/local/bin/.env
+RUN chmod +x /usr/local/bin/post.sh
+ENTRYPOINT ["/usr/local/bin/post.sh"]

@@ -1,0 +1,8 @@
+FROM node:20
+WORKDIR /usr/src/app
+RUN yarn config set strict-ssl false
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn
+COPY . .
+CMD ["node", "get.js"]

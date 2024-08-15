@@ -1,0 +1,9 @@
+FROM maven:3.8.7-openjdk-18-slim
+WORKDIR /app
+COPY pom.xml ./
+COPY src ./src
+COPY .env ./
+RUN mvn clean package -DskipTests
+RUN mvn -q compile
+COPY . .
+ENTRYPOINT ["mvn", "-q", "exec:java", "-Dexec.args=get"]

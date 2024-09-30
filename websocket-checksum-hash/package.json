@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "dependencies": {
+    "crc": "4.3.2"
+  },
+  "devDependencies": {
+    "jest": "29.7.0"
+  },
+  "engines": {
+    "node": "20.17.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "license": "ISC"
+}

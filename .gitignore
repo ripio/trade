@@ -1,3 +1,4 @@
 .env
 authentication/javascript/node_modules
 authentication/java/target
+websocket-checksum-hash/node_modules

@@ -1,0 +1,10 @@
+services:
+  get:
+    build:
+      context: .
+      dockerfile: Dockerfile-get
+
+  post:
+    build:
+      context: .
+      dockerfile: Dockerfile-post

@@ -4,8 +4,9 @@ This example demonstrates how to authenticate with the Ripio Trade API. You can 
 
 1. Java
 2. JavaScript
-3. Python
-4. Shell + cURL
+3. PHP
+4. Python
+5. Shell + cURL
 
 #### Environment variables
 

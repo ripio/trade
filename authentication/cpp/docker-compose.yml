@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  get:
+    build:
+      context: .
+      dockerfile: Dockerfile-get
+    volumes:
+      - ./.env:/usr/src/app/.env
+    environment:
+      - API_KEY=${API_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+
+  post:
+    build:
+      context: .
+      dockerfile: Dockerfile-post
+    volumes:
+      - ./.env:/usr/src/app/.env
+    environment:
+      - API_KEY=${API_KEY}
+      - SECRET_KEY=${SECRET_KEY}

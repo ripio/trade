@@ -1,0 +1,16 @@
+services:
+  get:
+    build:
+      context: .
+      dockerfile: Dockerfile-get
+      no_cache: true
+    env_file:
+      - .env
+
+  post:
+    build:
+      context: .
+      dockerfile: Dockerfile-post
+      no_cache: true
+    env_file:
+      - .env

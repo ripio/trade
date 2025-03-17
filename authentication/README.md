@@ -3,11 +3,13 @@
 This example demonstrates how to authenticate with the Ripio Trade API. You can choose from the following programming languages:
 
 1. C++
-2. Java
-3. JavaScript
-4. PHP
-5. Python
-6. Shell + cURL
+2. C#
+3. Java
+4. JavaScript
+5. PHP
+6. Python
+7. Rust
+8. Shell + cURL
 
 #### Environment variables
 

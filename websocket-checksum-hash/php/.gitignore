@@ -1,0 +1,42 @@
+# Composer
+/vendor/
+composer.phar
+composer.lock
+
+# PHPUnit
+/phpunit.xml
+.phpunit.result.cache
+
+# PHP CS Fixer
+/.php_cs
+/.php_cs.cache
+/.php-cs-fixer.cache
+
+# PHPStan
+/phpstan.neon
+
+# PHP Code Sniffer
+/.phpcs.xml
+/.phpcs-cache
+
+# PHP Mess Detector
+/phpmd.xml
+
+# PHP Insights
+/.insights.php
+
+# PHP CodeSniffer
+/.phpcs.xml
+/.phpcs-cache
+
+# Logs
+*.log
+
+# Cache files
+*.cache
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo

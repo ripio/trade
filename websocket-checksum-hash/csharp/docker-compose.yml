@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  csharp-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app

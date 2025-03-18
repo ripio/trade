@@ -1,6 +1,6 @@
 ### Ripio Trade - WebSocket Checksum Hash
 
-This example serves as a guide for generating checksum hashes for order book WebSocket messages. It’s essential that the checksum is generated consistently to ensure reliable comparison with the checksum received from the WebSocket messages.
+This example serves as a guide for generating checksum hashes for order book WebSocket messages. It's essential that the checksum is generated consistently to ensure reliable comparison with the checksum received from the WebSocket messages.
 
 Assuming the order book is received in the following format:
 
@@ -41,3 +41,30 @@ The following logic can be used to generate the checksum hash:
 * Calculate the checksum hash for the combined string;
 * If your CRC32 library produces a leading zero, remove it before comparing;
 * A checksum value of zero indicates that there are no bids or asks in the order book (which is unlikely);
+
+## Implementations
+
+This repository contains implementations of the WebSocket checksum hash algorithm in multiple programming languages:
+
+- [C++](./cpp/)
+- [C#](./csharp/)
+- [Java](./java/)
+- [JavaScript](./javascript/)
+- [PHP](./php/)
+- [Python](./python/)
+- [Rust](./rust/)
+
+Each implementation follows the same algorithm and produces the same checksum values for the same input data.
+
+## Running with Docker
+
+Each implementation includes Docker and docker-compose files to run the tests in a containerized environment.
+
+### Running a specific implementation
+
+To run tests for a specific implementation, navigate to its directory and use docker-compose:
+
+```bash
+cd python
+docker-compose up
+```

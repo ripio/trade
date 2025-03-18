@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  rust-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+    environment:
+      - CARGO_HOME=/usr/local/cargo
+
+volumes:
+  cargo-cache:

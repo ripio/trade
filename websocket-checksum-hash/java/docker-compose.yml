@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  java-test:
+    build:
+      context: .
+      dockerfile: Dockerfile

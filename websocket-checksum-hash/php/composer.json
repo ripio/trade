@@ -1,0 +1,13 @@
+{
+    "name": "ripio/websocket-checksum-hash",
+    "description": "WebSocket Checksum Hash implementation for PHP",
+    "type": "library",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "classmap": [
+            "ChecksumHash.php"
+        ]
+    }
+}

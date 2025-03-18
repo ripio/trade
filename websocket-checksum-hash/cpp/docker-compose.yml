@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  cpp-test:
+    build:
+      context: .
+      dockerfile: Dockerfile

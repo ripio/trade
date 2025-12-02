@@ -6,3 +6,4 @@ Here are the types of examples currently available:
 
 1. [Authentication](authentication)
 2. [WebSocket Checksum Hash](websocket-checksum-hash)
+3. [WebSocket API](websocket-api)

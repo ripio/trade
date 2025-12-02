@@ -1,0 +1,14 @@
+{
+  "name": "ripio-trade-websocket-api-examples",
+  "version": "1.0.0",
+  "description": "WebSocket API examples for Ripio Trade",
+  "scripts": {
+    "create": "node create-order.js",
+    "cancel": "node cancel-order.js",
+    "update": "node update-order.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ws": "^8.13.0"
+  }
+}

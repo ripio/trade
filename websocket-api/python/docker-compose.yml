@@ -1,0 +1,15 @@
+services:
+  create:
+    build:
+      context: .
+      dockerfile: Dockerfile-create
+
+  cancel:
+    build:
+      context: .
+      dockerfile: Dockerfile-cancel
+
+  update:
+    build:
+      context: .
+      dockerfile: Dockerfile-update

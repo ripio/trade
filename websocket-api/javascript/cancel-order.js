@@ -1,0 +1,71 @@
+const dotenv = require('dotenv')
+const WebSocket = require('ws')
+const crypto = require('crypto')
+
+dotenv.config()
+
+if (!process.env.API_KEY || !process.env.SECRET_KEY) {
+  throw new Error('Required environment variables (API_KEY, SECRET_KEY) are missing.')
+}
+
+const apiKey = process.env.API_KEY
+const secretKey = process.env.SECRET_KEY
+
+// WebSocket endpoint
+const WS_URL = 'wss://ws-api.ripio.com'
+
+// Generate signature for WebSocket API
+function generateSignature(timestamp, bodyParams) {
+  const message = timestamp.toString() + JSON.stringify(bodyParams)
+  return crypto.createHmac('sha256', secretKey).update(message).digest('base64')
+}
+
+// Create WebSocket connection
+const ws = new WebSocket(WS_URL)
+
+ws.on('open', () => {
+  console.log('Connected to WebSocket API')
+
+  // Prepare cancel parameters (business params only for signature)
+  // Replace with an actual order ID from your account
+  const timestamp = Date.now()
+  const bodyParams = {
+    id: '7155ED34-9EC4-4733-8B32-1E4319CB662F' // Replace with actual order ID
+  }
+
+  // Generate signature
+  const signature = generateSignature(timestamp, bodyParams)
+
+  // Create complete request with authentication
+  const request = {
+    id: 'req-cancel-001',
+    method: 'order.cancel',
+    params: {
+      ...bodyParams,
+      apiToken: apiKey,
+      timestamp: timestamp,
+      signature: signature
+    }
+  }
+
+  console.log('\nSending cancel order request:', JSON.stringify(request, null, 2))
+  ws.send(JSON.stringify(request))
+})
+
+ws.on('message', (data) => {
+  const response = JSON.parse(data.toString())
+  console.log('\nReceived response:', JSON.stringify(response, null, 2))
+  
+  // Close connection after receiving response
+  setTimeout(() => {
+    ws.close()
+  }, 1000)
+})
+
+ws.on('error', (error) => {
+  console.error('WebSocket error:', error)
+})
+
+ws.on('close', () => {
+  console.log('\nWebSocket connection closed')
+})

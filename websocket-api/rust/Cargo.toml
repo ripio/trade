@@ -1,0 +1,26 @@
+[package]
+name = "websocket-api-example"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "websocket-api-example"
+path = "src/main.rs"
+
+[[bin]]
+name = "cancel"
+path = "src/cancel.rs"
+
+[[bin]]
+name = "update"
+path = "src/update.rs"
+
+[dependencies]
+tokio = { version = "1.35", features = ["full"] }
+tokio-tungstenite = { version = "0.21", features = ["native-tls"] }
+futures-util = "0.3"
+serde_json = "1.0"
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.21"
+dotenv = "0.15"

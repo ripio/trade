@@ -1,0 +1,16 @@
+FROM rust:1.85
+
+WORKDIR /usr/src/app
+
+# Copy the Cargo.toml file
+COPY Cargo.toml ./
+
+# Copy the source code
+COPY src ./src
+COPY .env ./.env
+
+# Build the application
+RUN cargo build --bin websocket-api-example
+
+# Run the application
+CMD ["cargo", "run", "--bin", "websocket-api-example"]

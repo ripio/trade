@@ -15,7 +15,7 @@ const secretKey = process.env.SECRET_KEY
 
 const payload = {
   method: 'DELETE',
-  path: '/v4/orders',
+  path: '/trade/orders',
   body: {
     id: "EF8C7FDD-BE79-4F21-B3DA-CB8CEC6D43BF"
   },
@@ -27,7 +27,7 @@ const body = JSON.stringify(payload.body)
 const timestamp = Date.now().toString()
 const message = `${timestamp}${method}${path}${body}`
 const signature = CryptoJS.HmacSHA256(message, secretKey).toString(CryptoJS.enc.Base64)
-const url = `https://api.ripiotrade.co${payload.path}`
+const url = `https://api.ripio.com${payload.path}`
 
 void (async () => {
   const { default: fetch } = await import('node-fetch')

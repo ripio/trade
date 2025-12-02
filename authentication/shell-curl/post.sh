@@ -17,8 +17,8 @@ fi
 apiKey=$API_KEY
 secretKey=$SECRET_KEY
 method='POST'
-path='/v4/orders'
-urlBase='https://api.ripiotrade.co'
+path='/trade/orders'
+urlBase='https://api.ripio.com'
 
 body='{
     "amount": 0.01,

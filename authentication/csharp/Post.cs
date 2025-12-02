@@ -22,7 +22,7 @@ class Post
         
         // Define request parameters
         string method = "POST";
-        string path = "/v4/orders";
+        string path = "/trade/orders";
         
         // Create request body
         var bodyObject = new
@@ -52,7 +52,7 @@ class Post
         using var client = new HttpClient(handler);
         
         // Set up request
-        var request = new HttpRequestMessage(new HttpMethod(method), $"https://api.ripiotrade.co{path}");
+        var request = new HttpRequestMessage(new HttpMethod(method), $"https://api.ripio.com{path}");
         // Use TryAddWithoutValidation for headers that might have special formats
         request.Headers.TryAddWithoutValidation("Authorization", apiKey);
         request.Headers.TryAddWithoutValidation("timestamp", timestamp);

@@ -21,7 +21,7 @@ secret_key = os.getenv('SECRET_KEY')
 
 payload = {
     'method': 'GET',
-    'path': '/v4/orders?pair=BTC_BRL',
+    'path': '/trade/orders?pair=BTC_BRL',
 }
 
 timestamp = int(time.time() * 1000)
@@ -30,7 +30,7 @@ message = f"{timestamp}{payload['method']}{pathname}"
 signature = hmac.new(secret_key.encode(), message.encode(), hashlib.sha256).digest()
 signature_base64 = base64.b64encode(signature).decode()
 
-url = f"https://api.ripiotrade.co{payload['path']}"
+url = f"https://api.ripio.com{payload['path']}"
 
 headers = {
     'Content-Type': 'application/json',

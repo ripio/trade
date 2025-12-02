@@ -22,7 +22,7 @@ class Get
         
         // Define request parameters
         string method = "GET";
-        string path = "/v4/orders";
+        string path = "/trade/orders";
         string queryString = "?pair=BTC_BRL";
         string pathWithQuery = path + queryString;
         string body = "";
@@ -43,7 +43,7 @@ class Get
         using var client = new HttpClient(handler);
         
         // Set up request
-        var request = new HttpRequestMessage(new HttpMethod(method), $"https://api.ripiotrade.co{pathWithQuery}");
+        var request = new HttpRequestMessage(new HttpMethod(method), $"https://api.ripio.com{pathWithQuery}");
         // Use TryAddWithoutValidation for headers that might have special formats
         request.Headers.TryAddWithoutValidation("Authorization", apiKey);
         request.Headers.TryAddWithoutValidation("timestamp", timestamp);

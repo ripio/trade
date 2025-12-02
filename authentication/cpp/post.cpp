@@ -103,7 +103,7 @@ int main() {
     
     // Define the request parameters
     std::string method = "POST";
-    std::string path = "/v4/orders";
+    std::string path = "/trade/orders";
     
     // Create the request body
     json bodyJson = {
@@ -128,7 +128,7 @@ int main() {
     std::string signature = generateHmacSha256(message, secretKey);
     
     // Create the URL
-    std::string url = "https://api.ripiotrade.co" + path;
+    std::string url = "https://api.ripio.com" + path;
     
     // Initialize CURL session
     CURL* curl = curl_easy_init();

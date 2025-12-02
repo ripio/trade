@@ -103,7 +103,7 @@ int main() {
     
     // Define the request parameters
     std::string method = "GET";
-    std::string path = "/v4/orders";
+    std::string path = "/trade/orders";
     std::string queryParams = "?pair=BTC_BRL";
     std::string pathWithParams = path + queryParams;
     std::string pathname = path; // Just the path without query parameters
@@ -121,7 +121,7 @@ int main() {
     std::string signature = generateHmacSha256(message, secretKey);
     
     // Create the URL
-    std::string url = "https://api.ripiotrade.co" + pathWithParams;
+    std::string url = "https://api.ripio.com" + pathWithParams;
     
     // Initialize CURL session
     CURL* curl = curl_easy_init();

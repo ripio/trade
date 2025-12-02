@@ -31,8 +31,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Define the request parameters
     let method = "POST";
-    let path = "/v4/orders";
-    let url = format!("https://api.ripiotrade.co{}", path);
+    let path = "/trade/orders";
+    let url = format!("https://api.ripio.com{}", path);
 
     // Create the request body
     let body = OrderRequest {

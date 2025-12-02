@@ -20,10 +20,10 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Define the request parameters
     let method = "GET";
-    let path = "/v4/orders";
+    let path = "/trade/orders";
     let query = "pair=BTC_BRL";
     let full_path = format!("{}?{}", path, query);
-    let url = format!("https://api.ripiotrade.co{}", full_path);
+    let url = format!("https://api.ripio.com{}", full_path);
 
     // Get current timestamp
     let timestamp = SystemTime::now()

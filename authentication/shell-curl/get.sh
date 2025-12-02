@@ -17,9 +17,9 @@ fi
 apiKey=$API_KEY
 secretKey=$SECRET_KEY
 method='GET'
-path='/v4/orders'
+path='/trade/orders'
 params='?pair=BTC_BRL'
-urlBase='https://api.ripiotrade.co'
+urlBase='https://api.ripio.com'
 
 timestamp=$(date +%s%3N)
 url="${urlBase}${path}${params}"

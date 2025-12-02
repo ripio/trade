@@ -36,12 +36,12 @@ public class Get {
         String secretKey = dotenv.get("SECRET_KEY");
 
         String method = "GET";
-        String path = "/v4/orders?pair=BTC_BRL";
+        String path = "/trade/orders?pair=BTC_BRL";
         String pathname = path.split("\\?")[0];
         String timestamp = String.valueOf(System.currentTimeMillis());
         String message = timestamp + method + pathname;
         String signature = hmacSha256(message, secretKey);
-        String url = "https://api.ripiotrade.co" + path;
+        String url = "https://api.ripio.com" + path;
 
         try {
             SSLContext sslContext = SSLContext.getInstance("TLS");

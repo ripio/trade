@@ -46,7 +46,7 @@ public class Post {
 
         Map<String, Object> payload = new HashMap<>();
         payload.put("method", "POST");
-        payload.put("path", "/v4/orders");
+        payload.put("path", "/trade/orders");
         Map<String, Object> body = new HashMap<>();
         body.put("type", "limit");
         body.put("price", new BigDecimal(137000).toPlainString());
@@ -61,7 +61,7 @@ public class Post {
         String timestamp = String.valueOf(System.currentTimeMillis());
         String message = timestamp + method + path + bodyString;
         String signature = hmacSha256(message, secretKey);
-        String url = "https://api.ripiotrade.co" + (String) payload.get("path");
+        String url = "https://api.ripio.com" + (String) payload.get("path");
 
         SSLContext sslContext = createSslContext();
 

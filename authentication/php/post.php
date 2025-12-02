@@ -15,7 +15,7 @@ $secretKey = $_ENV['SECRET_KEY'];
 
 $payload = [
     'method' => 'POST',
-    'path' => '/v4/orders',
+    'path' => '/trade/orders',
     'body' => [
         'amount' => 0.01,
         'pair' => 'ABC_DEF',
@@ -31,7 +31,7 @@ $body = json_encode($payload['body'], JSON_UNESCAPED_SLASHES);
 $timestamp = (string)round(microtime(true) * 1000);
 $message = $timestamp . $method . $path . $body;
 $signature = base64_encode(hash_hmac('sha256', $message, $secretKey, true));
-$url = "https://api.ripiotrade.co" . $payload['path'];
+$url = "https://api.ripio.com" . $payload['path'];
 
 // Initialize cURL session
 $ch = curl_init($url);

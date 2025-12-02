@@ -15,7 +15,7 @@ $secretKey = $_ENV['SECRET_KEY'];
 
 $payload = [
     'method' => 'GET',
-    'path' => '/v4/orders?pair=BTC_BRL',
+    'path' => '/trade/orders?pair=BTC_BRL',
     'body' => '',
 ];
 
@@ -24,7 +24,7 @@ $path = parse_url($payload['path'], PHP_URL_PATH);
 $timestamp = (string)round(microtime(true) * 1000);
 $message = $timestamp . $method . $path;
 $signature = base64_encode(hash_hmac('sha256', $message, $secretKey, true));
-$url = "https://api.ripiotrade.co" . $payload['path'];
+$url = "https://api.ripio.com" . $payload['path'];
 
 // Initialize cURL session
 $ch = curl_init($url);

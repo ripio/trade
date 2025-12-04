@@ -35,6 +35,29 @@ chmod +x *.sh
 
 ## Running
 
+### Option 1: Using Docker Compose (Build & Run)
+
+Run all examples:
+
+```bash
+docker-compose up --build
+```
+
+Or run individual examples:
+
+```bash
+# Create order
+docker-compose up --build create
+
+# Cancel order (replace order ID in cancel-order.sh first)
+docker-compose up --build cancel
+
+# Update order (replace order ID in update-order.sh first)
+docker-compose up --build update
+```
+
+### Option 2: Local Installation
+
 ```bash
 # Create order
 ./create-order.sh

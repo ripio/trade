@@ -42,7 +42,7 @@ ws.on('open', () => {
     method: 'order.cancel',
     params: {
       ...bodyParams,
-      apiToken: apiKey,
+      api_token: apiKey,
       timestamp: timestamp,
       signature: signature
     }

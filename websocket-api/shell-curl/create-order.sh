@@ -27,26 +27,11 @@ body='{"pair":"ABC_DEF","side":"buy","type":"limit","amount":0.01,"price":300000
 message="${timestamp}${body}"
 signature=$(printf %s "$message" | openssl dgst -sha256 -hmac "$SECRET_KEY" -binary | openssl base64)
 
-# Create complete request
-request=$(cat <<EOF
-{
-  "id": "req-create-001",
-  "method": "order.create",
-  "params": {
-    "pair": "ABC_DEF",
-    "side": "buy",
-    "type": "limit",
-    "amount": 0.01,
-    "price": 300000,
-    "apiToken": "$API_KEY",
-    "timestamp": $timestamp,
-    "signature": "$signature"
-  }
-}
-EOF
-)
+# Create complete request (compact JSON on single line)
+request="{\"id\":\"req-create-001\",\"method\":\"order.create\",\"params\":{\"pair\":\"ABC_DEF\",\"side\":\"buy\",\"type\":\"limit\",\"amount\":0.01,\"price\":300000,\"api_token\":\"$API_KEY\",\"timestamp\":$timestamp,\"signature\":\"$signature\"}}"
 
-echo "Request to send via websocat:"
+echo "Sending request to WebSocket API..."
 echo "$request"
 echo ""
-echo "Run: echo '$request' | websocat wss://ws-api.ripio.com"
+echo "Response:"
+echo "$request" | websocat -n1 wss://ws-api.ripio.com

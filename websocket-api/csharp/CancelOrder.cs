@@ -38,7 +38,7 @@ class CancelOrder
                 @params = new
                 {
                     id = bodyParams.id,
-                    apiToken = apiKey,
+                    api_token = apiKey,
                     timestamp = timestamp,
                     signature = signature
                 }

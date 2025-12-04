@@ -12,8 +12,8 @@ class Post
         // Load environment variables
         DotNetEnv.Env.Load();
         
-        string apiKey = Environment.GetEnvironmentVariable("API_KEY");
-        string secretKey = Environment.GetEnvironmentVariable("SECRET_KEY");
+        string? apiKey = Environment.GetEnvironmentVariable("API_KEY");
+        string? secretKey = Environment.GetEnvironmentVariable("SECRET_KEY");
         
         if (string.IsNullOrEmpty(apiKey) || string.IsNullOrEmpty(secretKey))
         {

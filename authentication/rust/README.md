@@ -40,4 +40,4 @@ This implementation uses:
 - `hmac` and `sha2` for HMAC-SHA256 signature generation
 - `base64` for encoding the signature
 - `serde` and `serde_json` for JSON serialization/deserialization
-- `dotenv` for loading environment variables
+- `dotenvy` for loading environment variables

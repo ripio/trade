@@ -21,14 +21,25 @@ cp ../.env.sample .env
 
 ## Running
 
-### Option 1: Using Docker
+### Option 1: Using Docker Compose (Build & Run)
+
+Run all examples:
 
 ```bash
-# From the websocket-api directory
-docker-compose up -d java
-docker-compose exec java mvn exec:java -Dexec.mainClass="CreateOrder"
-docker-compose exec java mvn exec:java -Dexec.mainClass="CancelOrder"
-docker-compose exec java mvn exec:java -Dexec.mainClass="UpdateOrder"
+docker-compose up --build
+```
+
+Or run individual examples:
+
+```bash
+# Create order
+docker-compose up --build create
+
+# Cancel order (replace order ID in CancelOrder.java first)
+docker-compose up --build cancel
+
+# Update order (replace order ID in UpdateOrder.java first)
+docker-compose up --build update
 ```
 
 ### Option 2: Local Installation

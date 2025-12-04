@@ -35,7 +35,7 @@ public class CancelOrder extends WebSocketClient {
         request.addProperty("method", "order.cancel");
         
         JsonObject params = bodyParams.deepCopy();
-        params.addProperty("apiToken", apiKey);
+        params.addProperty("api_token", apiKey);
         params.addProperty("timestamp", timestamp);
         params.addProperty("signature", signature);
         request.add("params", params);

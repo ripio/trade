@@ -51,7 +51,7 @@ async def update_order():
             'method': 'order.update',
             'params': {
                 **body_params,
-                'apiToken': api_key,
+                'api_token': api_key,
                 'timestamp': timestamp,
                 'signature': signature
             }

@@ -26,14 +26,25 @@ pip install -r requirements.txt
 
 ## Running
 
-### Option 1: Using Docker
+### Option 1: Using Docker Compose (Build & Run)
+
+Run all examples:
 
 ```bash
-# From the websocket-api directory
-docker-compose up -d python
-docker-compose exec python python create_order.py
-docker-compose exec python python cancel_order.py
-docker-compose exec python python update_order.py
+docker-compose up --build
+```
+
+Or run individual examples:
+
+```bash
+# Create an order
+docker-compose up --build create
+
+# Cancel an order (replace order ID in cancel_order.py first)
+docker-compose up --build cancel
+
+# Update an order (replace order ID in update_order.py first)
+docker-compose up --build update
 ```
 
 ### Option 2: Local Installation

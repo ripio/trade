@@ -26,14 +26,25 @@ npm install
 
 ## Running
 
-### Option 1: Using Docker
+### Option 1: Using Docker Compose (Build & Run)
+
+Run all examples:
 
 ```bash
-# From the websocket-api directory
-docker-compose up -d javascript
-docker-compose exec javascript npm run create
-docker-compose exec javascript npm run cancel
-docker-compose exec javascript npm run update
+docker-compose up --build
+```
+
+Or run individual examples:
+
+```bash
+# Create an order
+docker-compose up --build create
+
+# Cancel an order (replace order ID in cancel-order.js first)
+docker-compose up --build cancel
+
+# Update an order (replace order ID in update-order.js first)
+docker-compose up --build update
 ```
 
 ### Option 2: Local Installation

@@ -1,18 +1,23 @@
 FROM ubuntu:22.04
 
+# Set non-interactive mode and timezone
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
     libcurl4-openssl-dev \
     libssl-dev \
+    libboost-all-dev \
     git \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Install nlohmann/json
 RUN mkdir -p /usr/include/nlohmann
-RUN wget -O /usr/include/nlohmann/json.hpp https://github.com/nlohmann/json/releases/download/v3.11.2/json.hpp
+RUN wget -O /usr/include/nlohmann/json.hpp https://github.com/nlohmann/json/releases/download/v3.11.3/json.hpp
 
 WORKDIR /usr/src/app
 

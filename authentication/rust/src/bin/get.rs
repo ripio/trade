@@ -1,5 +1,5 @@
 use base64::{engine::general_purpose, Engine as _};
-use dotenv::dotenv;
+use dotenvy::dotenv;
 use hmac::{Hmac, Mac};
 use reqwest::blocking::Client;
 use reqwest::header::{HeaderMap, HeaderValue, CONTENT_TYPE};

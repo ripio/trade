@@ -1,5 +1,5 @@
 use base64::{engine::general_purpose, Engine as _};
-use dotenv::dotenv;
+use dotenvy::dotenv;
 use futures_util::{SinkExt, StreamExt};
 use hmac::{Hmac, Mac};
 use serde_json::json;
@@ -55,7 +55,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             "type": "limit",
             "amount": 0.01,
             "price": 300000,
-            "apiToken": api_key,
+            "api_token": api_key,
             "timestamp": timestamp,
             "signature": signature
         }

@@ -26,14 +26,25 @@ composer install
 
 ## Running
 
-### Option 1: Using Docker
+### Option 1: Using Docker Compose (Build & Run)
+
+Run all examples:
 
 ```bash
-# From the websocket-api directory
-docker-compose up -d php
-docker-compose exec php php create-order.php
-docker-compose exec php php cancel-order.php
-docker-compose exec php php update-order.php
+docker-compose up --build
+```
+
+Or run individual examples:
+
+```bash
+# Create order
+docker-compose up --build create
+
+# Cancel order (update order ID in cancel-order.php first)
+docker-compose up --build cancel
+
+# Update order (update order ID in update-order.php first)
+docker-compose up --build update
 ```
 
 ### Option 2: Local Installation

@@ -86,7 +86,7 @@ The signature for WebSocket API is generated using:
 Timestamp + JSON Body (business parameters only)
 ```
 
-**Important**: Do NOT include `apiToken`, `timestamp`, or `signature` in the body when generating the signature. Only include the business parameters (pair, side, type, amount, price, etc.).
+**Important**: Do NOT include `api_token`, `timestamp`, or `signature` in the body when generating the signature. Only include the business parameters (pair, side, type, amount, price, etc.).
 
 ### Example
 
@@ -101,7 +101,7 @@ Timestamp + JSON Body (business parameters only)
     "type": "limit",
     "amount": 0.001,
     "price": 100000,
-    "apiToken": "your-api-token",
+    "api_token": "your-api-token",
     "timestamp": 1634567890000,
     "signature": "calculated-signature"
   }

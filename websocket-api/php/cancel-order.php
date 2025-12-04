@@ -36,7 +36,7 @@ $connector('wss://ws-api.ripio.com')->then(function($conn) use ($apiKey, $secret
         'id' => 'req-cancel-001',
         'method' => 'order.cancel',
         'params' => array_merge($bodyParams, [
-            'apiToken' => $GLOBALS['apiKey'],
+            'api_token' => $GLOBALS['apiKey'],
             'timestamp' => $timestamp,
             'signature' => $signature
         ])

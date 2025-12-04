@@ -70,12 +70,13 @@ int main() {
     try {
         net::io_context ioc;
         ssl::context ctx{ssl::context::tlsv12_client};
+        ctx.set_verify_mode(ssl::verify_none);
         
         tcp::resolver resolver{ioc};
-        websocket::stream<beast::ssl_stream<tcp::socket>> ws{ioc, ctx};
-        
         auto const results = resolver.resolve("ws-api.ripio.com", "443");
-        net::connect(get_lowest_layer(ws), results.begin(), results.end());
+        
+        websocket::stream<beast::ssl_stream<tcp::socket>> ws{ioc, ctx};
+        beast::get_lowest_layer(ws).connect(results);
         
         ws.next_layer().handshake(ssl::stream_base::client);
         ws.handshake("ws-api.ripio.com", "/");
@@ -105,7 +106,7 @@ int main() {
                 {"type", "limit"},
                 {"amount", 0.01},
                 {"price", 300000},
-                {"apiToken", apiKey},
+                {"api_token", apiKey},
                 {"timestamp", timestamp},
                 {"signature", signature}
             }}

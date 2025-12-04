@@ -43,7 +43,7 @@ public class CreateOrder extends WebSocketClient {
         request.addProperty("method", "order.create");
         
         JsonObject params = bodyParams.deepCopy();
-        params.addProperty("apiToken", apiKey);
+        params.addProperty("api_token", apiKey);
         params.addProperty("timestamp", timestamp);
         params.addProperty("signature", signature);
         request.add("params", params);

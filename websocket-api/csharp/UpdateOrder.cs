@@ -45,7 +45,7 @@ class UpdateOrder
                     id = bodyParams.id,
                     price = bodyParams.price,
                     amount = bodyParams.amount,
-                    apiToken = apiKey,
+                    api_token = apiKey,
                     timestamp = timestamp,
                     signature = signature
                 }

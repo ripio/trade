@@ -41,7 +41,7 @@ $connector('wss://ws-api.ripio.com')->then(function($conn) use ($apiKey, $secret
         'id' => 'req-create-001',
         'method' => 'order.create',
         'params' => array_merge($bodyParams, [
-            'apiToken' => $GLOBALS['apiKey'],
+            'api_token' => $GLOBALS['apiKey'],
             'timestamp' => $timestamp,
             'signature' => $signature
         ])

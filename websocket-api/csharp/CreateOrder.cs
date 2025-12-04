@@ -50,7 +50,7 @@ class CreateOrder
                     type = bodyParams.type,
                     amount = bodyParams.amount,
                     price = bodyParams.price,
-                    apiToken = apiKey,
+                    api_token = apiKey,
                     timestamp = timestamp,
                     signature = signature
                 }

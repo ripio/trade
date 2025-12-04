@@ -53,7 +53,7 @@ async def create_order():
             'method': 'order.create',
             'params': {
                 **body_params,
-                'apiToken': api_key,
+                'api_token': api_key,
                 'timestamp': timestamp,
                 'signature': signature
             }

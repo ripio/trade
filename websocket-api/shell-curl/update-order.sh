@@ -27,26 +27,11 @@ body='{"id":"7155ED34-9EC4-4733-8B32-1E4319CB662F","price":"350000","amount":"0.
 message="${timestamp}${body}"
 signature=$(printf %s "$message" | openssl dgst -sha256 -hmac "$SECRET_KEY" -binary | openssl base64)
 
-# Create complete request
-request=$(cat <<EOF
-{
-  "id": "req-update-001",
-  "method": "order.update",
-  "params": {
-    "id": "7155ED34-9EC4-4733-8B32-1E4319CB662F",
-    "price": "350000",
-    "amount": "0.02",
-    "apiToken": "$API_KEY",
-    "timestamp": $timestamp,
-    "signature": "$signature"
-  }
-}
-EOF
-)
+# Create complete request (compact JSON on single line)
+request="{\"id\":\"req-update-001\",\"method\":\"order.update\",\"params\":{\"id\":\"7155ED34-9EC4-4733-8B32-1E4319CB662F\",\"price\":\"350000\",\"amount\":\"0.02\",\"api_token\":\"$API_KEY\",\"timestamp\":$timestamp,\"signature\":\"$signature\"}}"
 
-echo "Request to send via websocat:"
+echo "Sending request to WebSocket API..."
 echo "$request"
 echo ""
-echo "Run: echo '$request' | websocat wss://ws-api.ripio.com"
-echo ""
-echo "Note: Replace the order ID with an actual order from your account"
+echo "Response:"
+echo "$request" | websocat -n1 wss://ws-api.ripio.com

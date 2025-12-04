@@ -46,7 +46,7 @@ ws.on('open', () => {
     method: 'order.create',
     params: {
       ...bodyParams,
-      apiToken: apiKey,
+      api_token: apiKey,
       timestamp: timestamp,
       signature: signature
     }

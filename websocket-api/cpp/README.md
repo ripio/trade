@@ -26,14 +26,25 @@ cp ../.env.sample .env
 
 ## Running
 
-### Option 1: Using Docker
+### Option 1: Using Docker Compose (Build & Run)
+
+Run all examples:
 
 ```bash
-# From the websocket-api directory
-docker-compose up -d cpp
-docker-compose exec cpp bash -c "g++ -std=c++17 create-order.cpp -o create-order -lssl -lcrypto -lboost_system -lpthread && ./create-order"
-docker-compose exec cpp bash -c "g++ -std=c++17 cancel-order.cpp -o cancel-order -lssl -lcrypto -lboost_system -lpthread && ./cancel-order"
-docker-compose exec cpp bash -c "g++ -std=c++17 update-order.cpp -o update-order -lssl -lcrypto -lboost_system -lpthread && ./update-order"
+docker-compose up --build
+```
+
+Or run individual examples:
+
+```bash
+# Create order
+docker-compose up --build create
+
+# Cancel order (replace order ID in cancel-order.cpp first)
+docker-compose up --build cancel
+
+# Update order (replace order ID in update-order.cpp first)
+docker-compose up --build update
 ```
 
 ### Option 2: Local Installation

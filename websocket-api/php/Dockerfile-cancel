@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.3-cli
 
 WORKDIR /usr/src/app
 
@@ -14,7 +14,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy composer files and install dependencies
 COPY composer.json ./
-RUN composer install --no-interaction --no-plugins --no-scripts
+RUN composer install --no-interaction --no-dev --prefer-dist
 
 # Copy the rest of the application
 COPY . .

@@ -1,5 +1,5 @@
 use base64::{engine::general_purpose, Engine as _};
-use dotenv::dotenv;
+use dotenvy::dotenv;
 use futures_util::{SinkExt, StreamExt};
 use hmac::{Hmac, Mac};
 use serde_json::json;
@@ -46,7 +46,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "method": "order.cancel",
         "params": {
             "id": "7155ED34-9EC4-4733-8B32-1E4319CB662F",
-            "apiToken": api_key,
+            "api_token": api_key,
             "timestamp": timestamp,
             "signature": signature
         }

@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 #include <boost/beast/core.hpp>
 #include <boost/beast/websocket.hpp>
+#include <boost/beast/websocket/ssl.hpp>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/ssl.hpp>
@@ -68,14 +69,23 @@ int main() {
     
     try {
         net::io_context ioc;
-        ssl::context ctx{ssl::context::tlsv12_client};
+        ssl::context ctx{ssl::context::tls_client};
+        ctx.set_default_verify_paths();
         ctx.set_verify_mode(ssl::verify_none);
         
         tcp::resolver resolver{ioc};
         auto const results = resolver.resolve("ws-api.ripio.com", "443");
         
-        websocket::stream<beast::ssl_stream<tcp::socket>> ws{ioc, ctx};
-        beast::get_lowest_layer(ws).connect(results);
+        websocket::stream<ssl::stream<tcp::socket>> ws{ioc, ctx};
+        net::connect(beast::get_lowest_layer(ws), results);
+        
+        // Set SNI Hostname (required for many HTTPS hosts)
+        if(!SSL_set_tlsext_host_name(ws.next_layer().native_handle(), "ws-api.ripio.com"))
+        {
+            throw boost::system::system_error{
+                static_cast<int>(::ERR_get_error()),
+                boost::asio::error::get_ssl_category()};
+        }
         
         ws.next_layer().handshake(ssl::stream_base::client);
         ws.handshake("ws-api.ripio.com", "/");

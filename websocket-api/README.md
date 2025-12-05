@@ -32,51 +32,53 @@ The WebSocket API allows you to perform trading operations (create, cancel, and 
 - `order.cancel` - Cancel an existing order
 - `order.update` - Update an existing order's price and/or amount
 
-## Environment variables
+## Environment Variables
 
-Before you begin, please configure your environment variables using the sample dotenv file:
+Before you begin, configure your environment variables using the sample dotenv file. Each language directory needs its own `.env` file:
 
+```bash
+# Copy the sample .env to the language directory you want to use
+cp .env.sample <language>/.env
+
+# For example:
+cp .env.sample javascript/.env
 ```
-$ cp .env.sample javascript/.env
-```
 
-You'll need to create a separate file for each language you want to run. Once you've created your `.env` file, update the API Key and Secret.
+Edit the `.env` file and add your API credentials (API Token and Secret).
 
 ## Running Options
 
-### Option 1: Using Docker (Recommended)
+### Option 1: Using Docker Compose (Recommended)
 
-We provide Docker setup for easy execution without installing dependencies locally.
+Each language has its own Docker Compose setup for easy execution without installing dependencies locally.
 
-1. Install Docker and Docker Compose:
-   - Docker: https://docs.docker.com/engine/install/
-   - Docker Compose: https://docs.docker.com/compose/install/
+#### Prerequisites
 
-2. Setup environment:
+- Docker: https://docs.docker.com/engine/install/
+- Docker Compose: https://docs.docker.com/compose/install/
+
+#### Running Examples
+
+Navigate to your chosen language directory and use Docker Compose:
+
 ```bash
-cp .env.sample .env
-# Edit .env with your API credentials
+# Navigate to the language directory
+cd <language>  # e.g., cd javascript, cd python, cd java, etc.
+
+# Run all examples
+docker-compose up --build
+
+# Or run individual examples:
+docker-compose up --build create    # Create order
+docker-compose up --build cancel    # Cancel order (update order ID in the file first)
+docker-compose up --build update    # Update order (update order ID in the file first)
 ```
 
-3. Run examples with Docker:
-```bash
-# Start a specific language container
-docker-compose up -d javascript
-
-# Execute commands inside the container
-docker-compose exec javascript npm run create-order
-docker-compose exec python python create_order.py
-docker-compose exec java mvn exec:java -Dexec.mainClass="CreateOrder"
-docker-compose exec php php create-order.php
-docker-compose exec rust cargo run --bin websocket-api-example
-
-# Stop containers
-docker-compose down
-```
+**Note**: Before running cancel or update examples, you need to replace the order ID in the respective source files with a valid order ID from your account.
 
 ### Option 2: Local Installation
 
-Install dependencies for your chosen language and run directly. Instructions for each language are available in the corresponding `README.md` file, [such as this one](javascript).
+Install dependencies for your chosen language and run directly. Detailed instructions for each language, including dependency installation and running commands, are available in the corresponding `README.md` file in each language directory.
 
 ## Authentication
 
